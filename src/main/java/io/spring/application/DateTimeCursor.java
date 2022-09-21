@@ -3,15 +3,18 @@ package io.spring.application;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
-public class DateTimeCursor extends PageCursor<DateTime> {
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 
-  public DateTimeCursor(DateTime data) {
+public class DateTimeCursor extends PageCursor<LocalDateTime> {
+
+  public DateTimeCursor(LocalDateTime data) {
     super(data);
   }
 
   @Override
   public String toString() {
-    return String.valueOf(getData().getMillis());
+    return String.valueOf(getData().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli());
   }
 
   public static DateTime parse(String cursor) {

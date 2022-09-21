@@ -1,15 +1,16 @@
 package io.spring.core.primary.article;
 
-import static java.util.stream.Collectors.toList;
-
 import io.spring.Util;
-import java.util.HashSet;
-import java.util.List;
-import java.util.UUID;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.joda.time.DateTime;
+
+import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.List;
+import java.util.UUID;
+
+import static java.util.stream.Collectors.toList;
 
 @Getter
 @NoArgsConstructor
@@ -22,12 +23,12 @@ public class Article {
   private String description;
   private String body;
   private List<Tag> tags;
-  private DateTime createdAt;
-  private DateTime updatedAt;
+  private LocalDateTime createdAt;
+  private LocalDateTime updatedAt;
 
   public Article(
       String title, String description, String body, List<String> tagList, String userId) {
-    this(title, description, body, tagList, userId, new DateTime());
+    this(title, description, body, tagList, userId, LocalDateTime.now());
   }
 
   public Article(
@@ -36,7 +37,7 @@ public class Article {
       String body,
       List<String> tagList,
       String userId,
-      DateTime createdAt) {
+      LocalDateTime createdAt) {
     this.id = UUID.randomUUID().toString();
     this.slug = toSlug(title);
     this.title = title;
@@ -52,15 +53,15 @@ public class Article {
     if (!Util.isEmpty(title)) {
       this.title = title;
       this.slug = toSlug(title);
-      this.updatedAt = new DateTime();
+      this.updatedAt = LocalDateTime.now();
     }
     if (!Util.isEmpty(description)) {
       this.description = description;
-      this.updatedAt = new DateTime();
+      this.updatedAt = LocalDateTime.now();
     }
     if (!Util.isEmpty(body)) {
       this.body = body;
-      this.updatedAt = new DateTime();
+      this.updatedAt = LocalDateTime.now();
     }
   }
 
