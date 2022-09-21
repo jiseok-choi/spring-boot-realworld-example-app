@@ -57,6 +57,7 @@ public class SecondaryDatasource extends HikariConfig {
         final HashMap<String, Object> properties = new HashMap<>();
         properties.put("hibernate.physical_naming_strategy", SpringPhysicalNamingStrategy.class.getName()); // 네이밍
         properties.put("hibernate.implicit_naming_strategy", SpringImplicitNamingStrategy.class.getName()); // 네이밍
+        properties.put("hibernate.dialect", "io.spring.SqliteDialect");
         properties.put("hibernate.hbm2ddl.auto", "create");
 
         em.setJpaPropertyMap(properties);
