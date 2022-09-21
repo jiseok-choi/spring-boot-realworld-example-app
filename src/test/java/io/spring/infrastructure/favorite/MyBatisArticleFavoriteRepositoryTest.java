@@ -1,7 +1,7 @@
 package io.spring.infrastructure.favorite;
 
-import io.spring.core.favorite.ArticleFavorite;
-import io.spring.core.favorite.ArticleFavoriteRepository;
+import io.spring.core.primary.favorite.ArticleFavorite;
+import io.spring.core.primary.favorite.ArticleFavoriteRepository;
 import io.spring.infrastructure.DbTestBase;
 import io.spring.infrastructure.repository.MyBatisArticleFavoriteRepository;
 import org.junit.jupiter.api.Assertions;

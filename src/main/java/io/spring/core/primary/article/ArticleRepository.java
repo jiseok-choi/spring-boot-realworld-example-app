@@ -1,4 +1,4 @@
-package io.spring.core.article;
+package io.spring.core.primary.article;
 
 import java.util.Optional;
 

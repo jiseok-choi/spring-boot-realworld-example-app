@@ -1,4 +1,4 @@
-package io.spring.core.favorite;
+package io.spring.core.primary.favorite;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

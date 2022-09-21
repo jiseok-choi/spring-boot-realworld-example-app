@@ -1,4 +1,4 @@
-package io.spring.core.user;
+package io.spring.core.primary.user;
 
 import io.spring.Util;
 import java.util.UUID;

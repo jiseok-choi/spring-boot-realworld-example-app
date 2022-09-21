@@ -1,4 +1,4 @@
-package io.spring.core.article;
+package io.spring.core.primary.article;
 
 import static java.util.stream.Collectors.toList;
 

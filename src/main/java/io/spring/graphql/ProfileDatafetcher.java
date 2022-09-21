@@ -9,7 +9,7 @@ import io.spring.application.ProfileQueryService;
 import io.spring.application.data.ArticleData;
 import io.spring.application.data.CommentData;
 import io.spring.application.data.ProfileData;
-import io.spring.core.user.User;
+import io.spring.core.primary.user.User;
 import io.spring.graphql.DgsConstants.ARTICLE;
 import io.spring.graphql.DgsConstants.COMMENT;
 import io.spring.graphql.DgsConstants.QUERY;

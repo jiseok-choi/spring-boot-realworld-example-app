@@ -1,7 +1,7 @@
 package io.spring.infrastructure.mybatis.mapper;
 
-import io.spring.core.user.FollowRelation;
-import io.spring.core.user.User;
+import io.spring.core.primary.user.FollowRelation;
+import io.spring.core.primary.user.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

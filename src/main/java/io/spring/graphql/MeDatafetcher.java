@@ -33,7 +33,7 @@ public class MeDatafetcher {
         || authentication.getPrincipal() == null) {
       return null;
     }
-    io.spring.core.user.User user = (io.spring.core.user.User) authentication.getPrincipal();
+    io.spring.core.primary.user.User user = (io.spring.core.primary.user.User) authentication.getPrincipal();
     UserData userData =
         userQueryService.findById(user.getId()).orElseThrow(ResourceNotFoundException::new);
     UserWithToken userWithToken = new UserWithToken(userData, authorization.split(" ")[1]);
@@ -49,7 +49,7 @@ public class MeDatafetcher {
   @DgsData(parentType = USERPAYLOAD.TYPE_NAME, field = USERPAYLOAD.User)
   public DataFetcherResult<User> getUserPayloadUser(
       DataFetchingEnvironment dataFetchingEnvironment) {
-    io.spring.core.user.User user = dataFetchingEnvironment.getLocalContext();
+    io.spring.core.primary.user.User user = dataFetchingEnvironment.getLocalContext();
     User result =
         User.newBuilder()
             .email(user.getEmail())

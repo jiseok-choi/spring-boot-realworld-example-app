@@ -1,7 +1,7 @@
 package io.spring.infrastructure.service;
 
 import io.spring.core.service.JwtService;
-import io.spring.core.user.User;
+import io.spring.core.primary.user.User;
 import java.util.Optional;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

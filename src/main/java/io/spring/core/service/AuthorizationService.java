@@ -1,8 +1,8 @@
 package io.spring.core.service;
 
-import io.spring.core.article.Article;
-import io.spring.core.comment.Comment;
-import io.spring.core.user.User;
+import io.spring.core.primary.article.Article;
+import io.spring.core.primary.comment.Comment;
+import io.spring.core.primary.user.User;
 
 public class AuthorizationService {
   public static boolean canWriteArticle(User user, Article article) {

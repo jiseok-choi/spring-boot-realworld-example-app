@@ -1,7 +1,7 @@
 package io.spring.application;
 
 import io.spring.application.data.CommentData;
-import io.spring.core.user.User;
+import io.spring.core.primary.user.User;
 import io.spring.infrastructure.mybatis.readservice.CommentReadService;
 import io.spring.infrastructure.mybatis.readservice.UserRelationshipQueryService;
 import java.util.ArrayList;

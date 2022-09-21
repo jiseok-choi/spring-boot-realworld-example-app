@@ -15,7 +15,7 @@ import io.spring.application.ArticleQueryService;
 import io.spring.application.article.ArticleCommandService;
 import io.spring.application.data.ArticleData;
 import io.spring.application.data.ProfileData;
-import io.spring.core.article.Article;
+import io.spring.core.primary.article.Article;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

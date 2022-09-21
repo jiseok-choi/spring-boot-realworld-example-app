@@ -1,7 +1,7 @@
 package io.spring.application.user;
 
-import io.spring.core.user.User;
-import io.spring.core.user.UserRepository;
+import io.spring.core.primary.user.User;
+import io.spring.core.primary.user.UserRepository;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import javax.validation.Constraint;

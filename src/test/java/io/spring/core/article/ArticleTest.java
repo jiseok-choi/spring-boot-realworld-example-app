@@ -4,6 +4,8 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.util.Arrays;
+
+import io.spring.core.primary.article.Article;
 import org.junit.jupiter.api.Test;
 
 public class ArticleTest {

@@ -1,6 +1,6 @@
 package io.spring.application.user;
 
-import io.spring.core.user.UserRepository;
+import io.spring.core.primary.user.UserRepository;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import org.springframework.beans.factory.annotation.Autowired;

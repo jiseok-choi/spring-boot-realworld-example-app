@@ -1,7 +1,7 @@
 package io.spring.api.security;
 
 import io.spring.core.service.JwtService;
-import io.spring.core.user.UserRepository;
+import io.spring.core.primary.user.UserRepository;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.Optional;

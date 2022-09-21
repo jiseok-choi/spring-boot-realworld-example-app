@@ -1,7 +1,7 @@
 package io.spring.infrastructure.repository;
 
-import io.spring.core.favorite.ArticleFavorite;
-import io.spring.core.favorite.ArticleFavoriteRepository;
+import io.spring.core.primary.favorite.ArticleFavorite;
+import io.spring.core.primary.favorite.ArticleFavoriteRepository;
 import io.spring.infrastructure.mybatis.mapper.ArticleFavoriteMapper;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;

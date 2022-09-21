@@ -1,9 +1,9 @@
 package io.spring.infrastructure.article;
 
-import io.spring.core.article.Article;
-import io.spring.core.article.ArticleRepository;
-import io.spring.core.user.User;
-import io.spring.core.user.UserRepository;
+import io.spring.core.primary.article.Article;
+import io.spring.core.primary.article.ArticleRepository;
+import io.spring.core.primary.user.User;
+import io.spring.core.primary.user.UserRepository;
 import io.spring.infrastructure.mybatis.mapper.ArticleMapper;
 import java.util.Arrays;
 import org.junit.jupiter.api.Assertions;

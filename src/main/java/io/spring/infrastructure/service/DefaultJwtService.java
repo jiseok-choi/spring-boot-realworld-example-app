@@ -5,7 +5,7 @@ import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.spring.core.service.JwtService;
-import io.spring.core.user.User;
+import io.spring.core.primary.user.User;
 import java.util.Date;
 import java.util.Optional;
 import javax.crypto.SecretKey;
