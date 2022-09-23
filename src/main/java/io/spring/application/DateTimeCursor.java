@@ -1,10 +1,8 @@
 package io.spring.application;
 
-import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
-
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.ZoneOffset;
 
 public class DateTimeCursor extends PageCursor<LocalDateTime> {
 
@@ -17,10 +15,10 @@ public class DateTimeCursor extends PageCursor<LocalDateTime> {
     return String.valueOf(getData().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli());
   }
 
-  public static DateTime parse(String cursor) {
+  public static LocalDateTime parse(String cursor) {
     if (cursor == null) {
       return null;
     }
-    return new DateTime().withMillis(Long.parseLong(cursor)).withZone(DateTimeZone.UTC);
+    return LocalDateTime.parse(cursor).withNano(Integer.parseInt(cursor)).atZone(ZoneOffset.UTC).toLocalDateTime();
   }
 }

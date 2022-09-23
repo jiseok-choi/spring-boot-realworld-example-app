@@ -16,6 +16,8 @@ import io.spring.application.article.ArticleCommandService;
 import io.spring.application.data.ArticleData;
 import io.spring.application.data.ProfileData;
 import io.spring.core.primary.article.Article;
+
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -63,8 +65,8 @@ public class ArticlesApiTest extends TestWithCurrentUser {
             body,
             false,
             0,
-            new DateTime(),
-            new DateTime(),
+            LocalDateTime.now(),
+            LocalDateTime.now(),
             tagList,
             new ProfileData("userid", user.getUsername(), user.getBio(), user.getImage(), false));
 
@@ -132,8 +134,8 @@ public class ArticlesApiTest extends TestWithCurrentUser {
             body,
             false,
             0,
-            new DateTime(),
-            new DateTime(),
+            LocalDateTime.now(),
+            LocalDateTime.now(),
             asList(tagList),
             new ProfileData("userid", user.getUsername(), user.getBio(), user.getImage(), false));
 
