@@ -46,7 +46,7 @@ public class SecondaryDatasource extends HikariConfig {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(secondaryDataSource());
         em.setPackagesToScan(
-                new String[] { "io.spring.core.secondary" }
+                new String[] { "io.spring.core.secondary.history" }
         );
 
         em.setJpaVendorAdapter(vendorAdapter);
