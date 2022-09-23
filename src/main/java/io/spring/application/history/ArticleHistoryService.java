@@ -4,6 +4,7 @@ import io.spring.core.primary.article.Article;
 import io.spring.core.primary.user.User;
 import io.spring.core.secondary.history.HistoryArticle;
 import io.spring.core.secondary.history.HistoryArticleRepository;
+import io.spring.core.secondary.history.HistoryTypes;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,7 @@ public class ArticleHistoryService {
     private final HistoryArticleRepository historyArticleRepository;
 
     @Transactional
-    public void createHistory(Article article, String type, User user) {
+    public void createHistory(Article article, HistoryTypes type, User user) {
         historyArticleRepository.save(HistoryArticle.builder()
                 .articleId(article.getId())
                 .type(type)

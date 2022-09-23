@@ -21,20 +21,21 @@ public class HistoryArticle {
     @Column(name = "id", nullable = false, length = 36)
     private String id;
 
-    @Column(name = "article_id")
+    @Column(name = "article_id", nullable = false)
     private String articleId;
 
-    @Column(name = "type")
-    private String type;
+    @Column(name = "type", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private HistoryTypes type;
 
-    @Column(name = "user_id")
+    @Column(name = "user_id", nullable = false)
     private String userId;
 
-    @Column(name = "created_at")
+    @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 
     @Builder
-    public HistoryArticle(String id, String articleId, String type, String userId, LocalDateTime createdAt) {
+    public HistoryArticle(String id, String articleId, HistoryTypes type, String userId, LocalDateTime createdAt) {
         this.id = id;
         this.articleId = articleId;
         this.type = type;

@@ -9,6 +9,7 @@ import io.spring.application.data.ArticleData;
 import io.spring.application.history.ArticleHistoryService;
 import io.spring.core.primary.article.Article;
 import io.spring.core.primary.article.ArticleRepository;
+import io.spring.core.secondary.history.HistoryTypes;
 import io.spring.core.service.AuthorizationService;
 import io.spring.core.primary.user.User;
 import java.util.HashMap;
@@ -58,7 +59,7 @@ public class ArticleApi {
               }
               Article updatedArticle =
                   articleCommandService.updateArticle(article, updateArticleParam);
-              articleHistoryService.createHistory(updatedArticle, "update", user);
+              articleHistoryService.createHistory(updatedArticle, HistoryTypes.UPDATE, user);
               return ResponseEntity.ok(
                   articleResponse(
                       articleQueryService.findBySlug(updatedArticle.getSlug(), user).get()));
@@ -77,7 +78,7 @@ public class ArticleApi {
                 throw new NoAuthorizationException();
               }
               articleRepository.remove(article);
-              articleHistoryService.createHistory(article, "delete", user);
+              articleHistoryService.createHistory(article, HistoryTypes.DELETE, user);
               return ResponseEntity.noContent().build();
             })
         .orElseThrow(ResourceNotFoundException::new);

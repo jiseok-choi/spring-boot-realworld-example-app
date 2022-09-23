@@ -9,6 +9,8 @@ import io.spring.core.primary.article.Article;
 import io.spring.core.primary.user.User;
 import java.util.HashMap;
 import javax.validation.Valid;
+
+import io.spring.core.secondary.history.HistoryTypes;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -31,7 +33,7 @@ public class ArticlesApi {
   public ResponseEntity createArticle(
       @Valid @RequestBody NewArticleParam newArticleParam, @AuthenticationPrincipal User user) {
     Article article = articleCommandService.createArticle(newArticleParam, user);
-    articleHistoryService.createHistory(article, "create", user);
+    articleHistoryService.createHistory(article, HistoryTypes.CREATE, user);
     return ResponseEntity.ok(
         new HashMap<String, Object>() {
           {
