@@ -6,6 +6,7 @@ import io.spring.application.ArticleQueryService;
 import io.spring.application.article.ArticleCommandService;
 import io.spring.application.article.UpdateArticleParam;
 import io.spring.application.data.ArticleData;
+import io.spring.application.history.ArticleHistoryService;
 import io.spring.core.primary.article.Article;
 import io.spring.core.primary.article.ArticleRepository;
 import io.spring.core.service.AuthorizationService;
@@ -32,6 +33,8 @@ public class ArticleApi {
   private ArticleRepository articleRepository;
   private ArticleCommandService articleCommandService;
 
+  private ArticleHistoryService articleHistoryService;
+
   @GetMapping
   public ResponseEntity<?> article(
       @PathVariable("slug") String slug, @AuthenticationPrincipal User user) {
@@ -55,6 +58,7 @@ public class ArticleApi {
               }
               Article updatedArticle =
                   articleCommandService.updateArticle(article, updateArticleParam);
+              articleHistoryService.createHistory(updatedArticle, "update", user);
               return ResponseEntity.ok(
                   articleResponse(
                       articleQueryService.findBySlug(updatedArticle.getSlug(), user).get()));
@@ -73,6 +77,7 @@ public class ArticleApi {
                 throw new NoAuthorizationException();
               }
               articleRepository.remove(article);
+              articleHistoryService.createHistory(article, "delete", user);
               return ResponseEntity.noContent().build();
             })
         .orElseThrow(ResourceNotFoundException::new);

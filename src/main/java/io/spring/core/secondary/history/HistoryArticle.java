@@ -1,6 +1,7 @@
 package io.spring.core.secondary.history;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
@@ -31,4 +32,13 @@ public class HistoryArticle {
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
+
+    @Builder
+    public HistoryArticle(String id, String articleId, String type, String userId, LocalDateTime createdAt) {
+        this.id = id;
+        this.articleId = articleId;
+        this.type = type;
+        this.userId = userId;
+        this.createdAt = createdAt;
+    }
 }

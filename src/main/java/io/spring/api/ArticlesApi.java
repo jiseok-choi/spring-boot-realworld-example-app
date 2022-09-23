@@ -4,6 +4,7 @@ import io.spring.application.ArticleQueryService;
 import io.spring.application.Page;
 import io.spring.application.article.ArticleCommandService;
 import io.spring.application.article.NewArticleParam;
+import io.spring.application.history.ArticleHistoryService;
 import io.spring.core.primary.article.Article;
 import io.spring.core.primary.user.User;
 import java.util.HashMap;
@@ -24,11 +25,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class ArticlesApi {
   private ArticleCommandService articleCommandService;
   private ArticleQueryService articleQueryService;
+  private ArticleHistoryService articleHistoryService;
 
   @PostMapping
   public ResponseEntity createArticle(
       @Valid @RequestBody NewArticleParam newArticleParam, @AuthenticationPrincipal User user) {
     Article article = articleCommandService.createArticle(newArticleParam, user);
+    articleHistoryService.createHistory(article, "create", user);
     return ResponseEntity.ok(
         new HashMap<String, Object>() {
           {
