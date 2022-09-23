@@ -15,7 +15,7 @@ import org.springframework.context.annotation.PropertySource;
 import javax.sql.DataSource;
 
 @Configuration
-@PropertySource({"classpath:application.properties"})
+@PropertySource({"classpath:application-primary.properties"})
 @MapperScan(
         sqlSessionTemplateRef = "sqlSessionTemplate",
         basePackages = {"io/spring/infrastructure/mybatis/mapper", "io/spring/infrastructure/mybatis/readservice"}
