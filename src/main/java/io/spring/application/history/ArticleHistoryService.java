@@ -1,6 +1,9 @@
 package io.spring.application.history;
 
+import io.spring.application.OffsetBasedPageRequest;
+import io.spring.application.Page;
 import io.spring.application.data.HistoryData;
+import io.spring.application.data.HistoryDataList;
 import io.spring.core.primary.article.Article;
 import io.spring.core.primary.user.User;
 import io.spring.core.secondary.history.HistoryArticle;
@@ -8,6 +11,7 @@ import io.spring.core.secondary.history.HistoryArticleRepository;
 import io.spring.core.secondary.history.HistoryTypes;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,11 +37,13 @@ public class ArticleHistoryService {
                 .build());
     }
 
-    public List<HistoryData> getHistoryByUserId(User user) {
-        List<HistoryArticle> history = historyArticleRepository.findByUserId(user.getId());
-        List<HistoryData> result = new ArrayList<>();
-        history.forEach(h -> result.add(transHistoryData(h)));
-        return result;
+    public HistoryDataList getHistoryByUserId(User user, Page page) {
+        Pageable pageable = new OffsetBasedPageRequest(page.getLimit(), page.getOffset());
+        List<HistoryArticle> history = historyArticleRepository.findByUserIdOrderByCreatedAtDesc(user.getId(), pageable);
+        List<HistoryData> datalist = new ArrayList<>();
+        history.forEach(h -> datalist.add(transHistoryData(h)));
+        int historyCount = historyArticleRepository.countHistory(user.getId());
+        return new HistoryDataList(datalist, historyCount);
     }
 
     private HistoryData transHistoryData(HistoryArticle hist) {
